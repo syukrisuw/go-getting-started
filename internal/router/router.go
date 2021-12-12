@@ -152,7 +152,7 @@ func SetupRoutes(app *fiber.App) {
 
 	}))
 
-	app.Get("/secured/admin/services/wss", websocket.New(func(c *websocket.Conn) {
+	app.Get("/secured/admin/services/wss/:groupid/:id", websocket.New(func(c *websocket.Conn) {
 
 		// c.Locals is added to the *websocket.Conn
 
