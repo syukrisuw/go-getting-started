@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>WebSocket</title>
 
@@ -13,18 +14,21 @@
             border-top: 1px solid #78b8ef;
             padding: 5px 10px;
         }
+        
         .form .placeholder,
         .form .input-message,
         .form button {
             display: block;
             margin-bottom: 5px;
         }
+        
         .form .input-message {
             padding: 7px;
             border: 1px solid #ecebeb;
             border-radius: 4px;
             width: -webkit-fill-available;
         }
+        
         .form button {
             width: 100%;
             color: white;
@@ -33,14 +37,17 @@
             background-color: #78b8ef;
             border: 1px solid #5a9ed8;
         }
+        
         .container {
             margin-bottom: 50px;
         }
+        
         .container p {
             display: block;
         }
     </style>
 </head>
+
 <body>
     <div class="container"></div>
 
@@ -59,18 +66,18 @@
         app.ws = undefined
         app.container = undefined
 
-        app.print = function (message) {
+        app.print = function(message) {
             var el = document.createElement("p")
             el.innerHTML = message
             app.container.append(el)
         }
 
-        app.doSendMessage = function () {
+        app.doSendMessage = function() {
             var messageRaw = document.querySelector('.input-message').value
-			app.ws.send(messageRaw);
+            app.ws.send(messageRaw);
             //app.ws.send(JSON.stringify({
             //    Message: messageRaw,
-			//	From: document.querySelector('.username').innerText
+            //	From: document.querySelector('.username').innerText
             //}));
 
             var message = '<b>me</b>: ' + messageRaw
@@ -79,7 +86,7 @@
             document.querySelector('.input-message').value = ''
         }
 
-        app.init = function () {
+        app.init = function() {
             if (!(window.WebSocket)) {
                 alert('Your browser does not support WebSocket')
                 return
@@ -90,37 +97,36 @@
 
             app.container = document.querySelector('.container')
 
-            app.ws = new WebSocket("ws://localhost:9292/ws/wanthat?v=0.0.1&username=" + name)
+            app.ws = new WebSocket("ws://wanthatgows.herokuapp.com/ws/wanthat?v=0.0.1&username=" + name)
 
             app.ws.onopen = function() {
                 var message = '<b>me</b>: connected'
                 app.print(message)
             }
 
-            app.ws.onmessage = function (event) {
-				//app.print(event.data)
-				var res;
-				try {
-					res = JSON.parse(event.data)
-				}
-				catch(e) {
-					res = null; //becauser messageraw don't started with curly braces
-				}
-				if (res != null) {
-					var messsage = ''
-					if (res.Type === 'New User') {
-						message = 'User <b>' + res.From + '</b>: connected'
-					} else if (res.Type === 'Leave') {
-						message = 'User <b>' + res.From + '</b>: disconnected'
-					} else {
-						message = '<b>' + res.From + '</b>: ' + res.Message 
-					}
+            app.ws.onmessage = function(event) {
+                //app.print(event.data)
+                var res;
+                try {
+                    res = JSON.parse(event.data)
+                } catch (e) {
+                    res = null; //becauser messageraw don't started with curly braces
+                }
+                if (res != null) {
+                    var messsage = ''
+                    if (res.Type === 'New User') {
+                        message = 'User <b>' + res.From + '</b>: connected'
+                    } else if (res.Type === 'Leave') {
+                        message = 'User <b>' + res.From + '</b>: disconnected'
+                    } else {
+                        message = '<b>' + res.From + '</b>: ' + res.Message
+                    }
 
-					app.print(message)
-				}
+                    app.print(message)
+                }
             }
 
-            app.ws.onclose = function () {
+            app.ws.onclose = function() {
                 var message = '<b>me</b>: disconnected'
                 app.print(message)
             }
@@ -129,4 +135,5 @@
         window.onload = app.init
     </script>
 </body>
+
 </html>
