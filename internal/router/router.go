@@ -111,9 +111,9 @@ func SetupRoutes(app *fiber.App) {
 
 		// c.Locals is added to the *websocket.Conn
 
-		log.Println(c.Locals("allowed"))            // true
-		log.Println("id:", c.Params("id"))          // 123, can be used as room-id
-		log.Println("groupId:", c.Params("grouId")) // 123, can be used as room-id
+		log.Println(c.Locals("allowed"))             // true
+		log.Println("id:", c.Params("id"))           // 123, can be used as room-id
+		log.Println("groupId:", c.Params("groupId")) // 123, can be used as room-id
 		//query string param
 		log.Println("v:", c.Query("v")) // 1.0
 		username := c.Query("username")
@@ -157,9 +157,9 @@ func SetupRoutes(app *fiber.App) {
 
 		// c.Locals is added to the *websocket.Conn
 
-		log.Println(c.Locals("allowed"))            // true
-		log.Println("id:", c.Params("id"))          // 123, can be used as room-id
-		log.Println("grouId:", c.Params("groupId")) // 123, can be used as room-id
+		log.Println(c.Locals("allowed"))             // true
+		log.Println("id:", c.Params("id"))           // 123, can be used as room-id
+		log.Println("groupId:", c.Params("groupId")) // 123, can be used as room-id
 		//query string param
 		log.Println("v:", c.Query("v")) // 1.0
 		username := c.Query("username")
