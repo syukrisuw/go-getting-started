@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gofiber/fiber/v2"
 	jwtware "github.com/gofiber/jwt/v2"
-	"github.com/heroku/wanthatgows/pkg/config"
+	"github.com/heroku/alaqsha/pkg/config"
 )
 
 // Protected protect routes jwt HS256

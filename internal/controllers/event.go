@@ -3,8 +3,8 @@ package controllers
 import (
 	"time"
 
-	"github.com/heroku/wanthatgows/internal/database"
-	"github.com/heroku/wanthatgows/internal/models"
+	"github.com/heroku/alaqsha/internal/database"
+	"github.com/heroku/alaqsha/internal/models"
 
 	"github.com/gofiber/fiber/v2"
 )

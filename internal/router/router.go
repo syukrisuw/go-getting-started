@@ -7,8 +7,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/websocket/v2"
-	"github.com/heroku/wanthatgows/internal/controllers"
-	"github.com/heroku/wanthatgows/internal/middleware"
+	"github.com/heroku/alaqsha/internal/controllers"
+	"github.com/heroku/alaqsha/internal/middleware"
 	gubrak "github.com/novalagung/gubrak/v2"
 )
 

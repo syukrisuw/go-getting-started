@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/heroku/wanthatgows/internal/database"
-	"github.com/heroku/wanthatgows/internal/models"
+	"github.com/heroku/alaqsha/internal/database"
+	"github.com/heroku/alaqsha/internal/models"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"

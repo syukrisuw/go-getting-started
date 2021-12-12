@@ -1,85 +1,308 @@
+# github.com/andybalholm/brotli v1.0.2
+## explicit; go 1.12
+github.com/andybalholm/brotli
+# github.com/cheekybits/genny v1.0.0
+## explicit
+github.com/cheekybits/genny/generic
+# github.com/chuckpreslar/emission v0.0.0-20170206194824-a7ddd980baf9
+## explicit
+github.com/chuckpreslar/emission
+# github.com/cloudwebrtc/flutter-webrtc-server v0.0.0-20211127140219-0a682448a7a7
+## explicit; go 1.12
+github.com/cloudwebrtc/flutter-webrtc-server/pkg/logger
+github.com/cloudwebrtc/flutter-webrtc-server/pkg/turn
+github.com/cloudwebrtc/flutter-webrtc-server/pkg/util
+github.com/cloudwebrtc/flutter-webrtc-server/pkg/websocket
+# github.com/dgrijalva/jwt-go v3.2.0+incompatible
+## explicit
+github.com/dgrijalva/jwt-go
+# github.com/fasthttp/websocket v1.4.3-rc.10
+## explicit; go 1.15
+github.com/fasthttp/websocket
 # github.com/gin-contrib/sse v0.1.0
 ## explicit; go 1.12
-github.com/gin-contrib/sse
 # github.com/gin-gonic/gin v1.7.4
 ## explicit; go 1.13
-github.com/gin-gonic/gin
-github.com/gin-gonic/gin/binding
-github.com/gin-gonic/gin/internal/bytesconv
-github.com/gin-gonic/gin/internal/json
-github.com/gin-gonic/gin/render
 # github.com/go-playground/locales v0.13.0
 ## explicit; go 1.13
-github.com/go-playground/locales
-github.com/go-playground/locales/currency
 # github.com/go-playground/universal-translator v0.17.0
 ## explicit; go 1.13
-github.com/go-playground/universal-translator
 # github.com/go-playground/validator/v10 v10.4.1
 ## explicit; go 1.13
-github.com/go-playground/validator/v10
+# github.com/gofiber/fiber/v2 v2.23.0
+## explicit; go 1.16
+github.com/gofiber/fiber/v2
+github.com/gofiber/fiber/v2/internal/bytebufferpool
+github.com/gofiber/fiber/v2/internal/colorable
+github.com/gofiber/fiber/v2/internal/fasttemplate
+github.com/gofiber/fiber/v2/internal/fwd
+github.com/gofiber/fiber/v2/internal/go-json
+github.com/gofiber/fiber/v2/internal/go-json/decoder
+github.com/gofiber/fiber/v2/internal/go-json/encoder
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm_color
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm_color_indent
+github.com/gofiber/fiber/v2/internal/go-json/encoder/vm_indent
+github.com/gofiber/fiber/v2/internal/go-json/errors
+github.com/gofiber/fiber/v2/internal/go-json/runtime
+github.com/gofiber/fiber/v2/internal/isatty
+github.com/gofiber/fiber/v2/internal/memory
+github.com/gofiber/fiber/v2/internal/msgp
+github.com/gofiber/fiber/v2/internal/schema
+github.com/gofiber/fiber/v2/internal/uuid
+github.com/gofiber/fiber/v2/middleware/cors
+github.com/gofiber/fiber/v2/middleware/limiter
+github.com/gofiber/fiber/v2/middleware/logger
+github.com/gofiber/fiber/v2/utils
+# github.com/gofiber/jwt/v2 v2.2.7
+## explicit; go 1.15
+github.com/gofiber/jwt/v2
+# github.com/gofiber/websocket/v2 v2.0.14
+## explicit; go 1.14
+github.com/gofiber/websocket/v2
+# github.com/golang-jwt/jwt/v4 v4.0.0
+## explicit; go 1.15
+github.com/golang-jwt/jwt/v4
 # github.com/golang/protobuf v1.5.2
 ## explicit; go 1.9
-github.com/golang/protobuf/proto
+# github.com/google/uuid v1.3.0
+## explicit
+github.com/google/uuid
+# github.com/gorilla/websocket v1.4.2
+## explicit; go 1.12
+github.com/gorilla/websocket
 # github.com/heroku/x v0.0.33
 ## explicit; go 1.12
 github.com/heroku/x/hmetrics
 github.com/heroku/x/hmetrics/onload
+# github.com/jackc/chunkreader/v2 v2.0.1
+## explicit; go 1.12
+github.com/jackc/chunkreader/v2
+# github.com/jackc/pgconn v1.10.1
+## explicit; go 1.12
+github.com/jackc/pgconn
+github.com/jackc/pgconn/internal/ctxwatch
+github.com/jackc/pgconn/stmtcache
+# github.com/jackc/pgio v1.0.0
+## explicit; go 1.12
+github.com/jackc/pgio
+# github.com/jackc/pgpassfile v1.0.0
+## explicit; go 1.12
+github.com/jackc/pgpassfile
+# github.com/jackc/pgproto3/v2 v2.2.0
+## explicit; go 1.12
+github.com/jackc/pgproto3/v2
+# github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b
+## explicit; go 1.14
+github.com/jackc/pgservicefile
+# github.com/jackc/pgtype v1.9.0
+## explicit; go 1.13
+github.com/jackc/pgtype
+# github.com/jackc/pgx/v4 v4.14.0
+## explicit; go 1.13
+github.com/jackc/pgx/v4
+github.com/jackc/pgx/v4/internal/sanitize
+github.com/jackc/pgx/v4/stdlib
+# github.com/jinzhu/inflection v1.0.0
+## explicit
+github.com/jinzhu/inflection
+# github.com/jinzhu/now v1.1.3
+## explicit; go 1.12
+github.com/jinzhu/now
+# github.com/joho/godotenv v1.4.0
+## explicit; go 1.12
+github.com/joho/godotenv
 # github.com/json-iterator/go v1.1.9
 ## explicit; go 1.12
-github.com/json-iterator/go
+# github.com/klauspost/compress v1.13.4
+## explicit; go 1.13
+github.com/klauspost/compress/flate
+github.com/klauspost/compress/gzip
+github.com/klauspost/compress/zlib
 # github.com/leodido/go-urn v1.2.0
 ## explicit; go 1.13
-github.com/leodido/go-urn
+# github.com/lib/pq v1.10.4
+## explicit; go 1.13
+github.com/lib/pq
+github.com/lib/pq/oid
+github.com/lib/pq/scram
+# github.com/lucas-clemente/quic-go v0.7.1-0.20190401152353-907071221cf9
+## explicit; go 1.12
+github.com/lucas-clemente/quic-go
+github.com/lucas-clemente/quic-go/internal/ackhandler
+github.com/lucas-clemente/quic-go/internal/congestion
+github.com/lucas-clemente/quic-go/internal/flowcontrol
+github.com/lucas-clemente/quic-go/internal/handshake
+github.com/lucas-clemente/quic-go/internal/protocol
+github.com/lucas-clemente/quic-go/internal/qerr
+github.com/lucas-clemente/quic-go/internal/utils
+github.com/lucas-clemente/quic-go/internal/wire
+# github.com/marten-seemann/qtls v0.2.3
+## explicit; go 1.12
+github.com/marten-seemann/qtls
 # github.com/mattn/go-isatty v0.0.12
 ## explicit; go 1.12
-github.com/mattn/go-isatty
 # github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421
 ## explicit
-github.com/modern-go/concurrent
 # github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742
 ## explicit
-github.com/modern-go/reflect2
+# github.com/novalagung/gubrak/v2 v2.0.1
+## explicit; go 1.13
+github.com/novalagung/gubrak/v2
+# github.com/pion/datachannel v1.4.21
+## explicit; go 1.13
+github.com/pion/datachannel
+# github.com/pion/dtls/v2 v2.0.2
+## explicit; go 1.13
+github.com/pion/dtls/v2
+github.com/pion/dtls/v2/internal/closer
+github.com/pion/dtls/v2/internal/net/connctx
+github.com/pion/dtls/v2/pkg/crypto/ccm
+github.com/pion/dtls/v2/pkg/crypto/fingerprint
+# github.com/pion/ice v0.7.18
+## explicit; go 1.13
+github.com/pion/ice
+# github.com/pion/logging v0.2.2
+## explicit; go 1.12
+github.com/pion/logging
+# github.com/pion/mdns v0.0.4
+## explicit; go 1.12
+github.com/pion/mdns
+# github.com/pion/quic v0.1.1
+## explicit
+github.com/pion/quic
+github.com/pion/quic/internal/wrapper
+# github.com/pion/randutil v0.1.0
+## explicit; go 1.14
+github.com/pion/randutil
+# github.com/pion/rtcp v1.2.9
+## explicit; go 1.13
+github.com/pion/rtcp
+# github.com/pion/rtp v1.6.0
+## explicit; go 1.13
+github.com/pion/rtp
+github.com/pion/rtp/codecs
+# github.com/pion/sctp v1.7.10
+## explicit; go 1.13
+github.com/pion/sctp
+# github.com/pion/sdp/v2 v2.4.0
+## explicit; go 1.12
+github.com/pion/sdp/v2
+# github.com/pion/srtp v1.5.1
+## explicit; go 1.12
+github.com/pion/srtp
+# github.com/pion/stun v0.3.5
+## explicit; go 1.12
+github.com/pion/stun
+github.com/pion/stun/internal/hmac
+# github.com/pion/transport v0.10.1
+## explicit; go 1.12
+github.com/pion/transport/deadline
+github.com/pion/transport/packetio
+github.com/pion/transport/replaydetector
+github.com/pion/transport/vnet
+# github.com/pion/turn/v2 v2.0.5
+## explicit; go 1.13
+github.com/pion/turn/v2
+github.com/pion/turn/v2/internal/allocation
+github.com/pion/turn/v2/internal/client
+github.com/pion/turn/v2/internal/ipnet
+github.com/pion/turn/v2/internal/proto
+github.com/pion/turn/v2/internal/server
+# github.com/pion/udp v0.1.0
+## explicit; go 1.14
+github.com/pion/udp
+# github.com/pion/webrtc/v2 v2.2.26
+## explicit; go 1.12
+github.com/pion/webrtc/v2
+github.com/pion/webrtc/v2/internal/mux
+github.com/pion/webrtc/v2/internal/util
+github.com/pion/webrtc/v2/pkg/media
+github.com/pion/webrtc/v2/pkg/rtcerr
+# github.com/pkg/errors v0.9.1
+## explicit
+github.com/pkg/errors
+# github.com/rs/zerolog v1.23.0
+## explicit; go 1.15
+github.com/rs/zerolog
+github.com/rs/zerolog/internal/cbor
+github.com/rs/zerolog/internal/json
+# github.com/savsgio/gotils v0.0.0-20210921075833-21a6215cb0e4
+## explicit; go 1.12
+github.com/savsgio/gotils/strconv
 # github.com/ugorji/go/codec v1.1.7
 ## explicit
-github.com/ugorji/go/codec
-# golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-## explicit; go 1.11
-golang.org/x/crypto/sha3
-# golang.org/x/sys v0.0.0-20210423185535-09eb48e85fd7
+# github.com/valyala/bytebufferpool v1.0.0
+## explicit
+github.com/valyala/bytebufferpool
+# github.com/valyala/fasthttp v1.31.0
 ## explicit; go 1.12
+github.com/valyala/fasthttp
+github.com/valyala/fasthttp/fasthttputil
+github.com/valyala/fasthttp/reuseport
+github.com/valyala/fasthttp/stackless
+# github.com/valyala/tcplisten v1.0.0
+## explicit; go 1.12
+github.com/valyala/tcplisten
+# golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
+## explicit; go 1.17
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/chacha20
+golang.org/x/crypto/chacha20poly1305
+golang.org/x/crypto/cryptobyte
+golang.org/x/crypto/cryptobyte/asn1
+golang.org/x/crypto/curve25519
+golang.org/x/crypto/curve25519/internal/field
+golang.org/x/crypto/hkdf
+golang.org/x/crypto/internal/poly1305
+golang.org/x/crypto/internal/subtle
+golang.org/x/crypto/pbkdf2
+# golang.org/x/net v0.0.0-20210510120150-4163338589ed
+## explicit; go 1.17
+golang.org/x/net/bpf
+golang.org/x/net/dns/dnsmessage
+golang.org/x/net/internal/iana
+golang.org/x/net/internal/socket
+golang.org/x/net/ipv4
+# golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1
+## explicit; go 1.17
 golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
+golang.org/x/sys/windows
+# golang.org/x/text v0.3.7
+## explicit; go 1.17
+golang.org/x/text/cases
+golang.org/x/text/internal
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/secure/precis
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+golang.org/x/text/width
+# golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+## explicit; go 1.11
+golang.org/x/xerrors
+golang.org/x/xerrors/internal
 # google.golang.org/protobuf v1.27.1
 ## explicit; go 1.9
-google.golang.org/protobuf/encoding/prototext
-google.golang.org/protobuf/encoding/protowire
-google.golang.org/protobuf/internal/descfmt
-google.golang.org/protobuf/internal/descopts
-google.golang.org/protobuf/internal/detrand
-google.golang.org/protobuf/internal/encoding/defval
-google.golang.org/protobuf/internal/encoding/messageset
-google.golang.org/protobuf/internal/encoding/tag
-google.golang.org/protobuf/internal/encoding/text
-google.golang.org/protobuf/internal/errors
-google.golang.org/protobuf/internal/filedesc
-google.golang.org/protobuf/internal/filetype
-google.golang.org/protobuf/internal/flags
-google.golang.org/protobuf/internal/genid
-google.golang.org/protobuf/internal/impl
-google.golang.org/protobuf/internal/order
-google.golang.org/protobuf/internal/pragma
-google.golang.org/protobuf/internal/set
-google.golang.org/protobuf/internal/strs
-google.golang.org/protobuf/internal/version
-google.golang.org/protobuf/proto
-google.golang.org/protobuf/reflect/protodesc
-google.golang.org/protobuf/reflect/protoreflect
-google.golang.org/protobuf/reflect/protoregistry
-google.golang.org/protobuf/runtime/protoiface
-google.golang.org/protobuf/runtime/protoimpl
-google.golang.org/protobuf/types/descriptorpb
 # gopkg.in/yaml.v2 v2.2.8
 ## explicit
-gopkg.in/yaml.v2
+# gorm.io/driver/postgres v1.2.3
+## explicit; go 1.14
+gorm.io/driver/postgres
+# gorm.io/gorm v1.22.4
+## explicit; go 1.14
+gorm.io/gorm
+gorm.io/gorm/callbacks
+gorm.io/gorm/clause
+gorm.io/gorm/logger
+gorm.io/gorm/migrator
+gorm.io/gorm/schema
+gorm.io/gorm/utils

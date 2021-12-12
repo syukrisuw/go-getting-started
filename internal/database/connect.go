@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/heroku/wanthatgows/internal/models"
+	"github.com/heroku/alaqsha/internal/models"
 	_ "github.com/lib/pq"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

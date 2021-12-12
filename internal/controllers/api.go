@@ -6,8 +6,8 @@ import (
 	"math/rand"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/heroku/wanthatgows/internal/database"
-	"github.com/heroku/wanthatgows/internal/models"
+	"github.com/heroku/alaqsha/internal/database"
+	"github.com/heroku/alaqsha/internal/models"
 )
 
 // Hello hanlde api status

@@ -9,9 +9,9 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/websocket/v2"
-	"github.com/heroku/wanthatgows/internal/database"
-	"github.com/heroku/wanthatgows/internal/middleware"
-	"github.com/heroku/wanthatgows/internal/router"
+	"github.com/heroku/alaqsha/internal/database"
+	"github.com/heroku/alaqsha/internal/middleware"
+	"github.com/heroku/alaqsha/internal/router"
 	_ "github.com/heroku/x/hmetrics/onload"
 )
 

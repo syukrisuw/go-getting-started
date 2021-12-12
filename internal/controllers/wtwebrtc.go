@@ -8,11 +8,11 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	_ "github.com/heroku/wanthatgows/internal/middleware"
+	_ "github.com/heroku/alaqsha/internal/middleware"
 	"github.com/pion/rtcp"
 	"github.com/pion/webrtc/v2"
 
-	"github.com/heroku/wanthatgows/internal/models"
+	"github.com/heroku/alaqsha/internal/models"
 )
 
 const (
