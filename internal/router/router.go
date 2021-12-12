@@ -123,7 +123,8 @@ func SetupRoutes(app *fiber.App) {
 		currentConn := WebSocketConnection{Conn: c, Username: username}
 		//add the new connection to list
 		connections = append(connections, &currentConn)
-		broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $username Joined")
+		message := fmt.Sprintf("User: %s Joined", username)
+		broadcastMessage(&currentConn, MESSAGE_NEW_USER, message)
 
 		// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
 		var (
