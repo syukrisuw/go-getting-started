@@ -97,7 +97,7 @@
 
             app.container = document.querySelector('.container')
 
-            app.ws = new WebSocket("ws://wanthatgows.herokuapp.com/ws/wanthat?v=0.0.1&username=" + name)
+            app.ws = new WebSocket("wss://wanthatgows.herokuapp.com/ws/wanthat?v=0.0.1&username=" + name)
 
             app.ws.onopen = function() {
                 var message = '<b>me</b>: connected'
