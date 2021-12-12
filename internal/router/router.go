@@ -63,8 +63,8 @@ func ejectConnection(currentConn *WebSocketConnection) {
 // SetupRoutes setup router api
 func SetupRoutes(app *fiber.App) {
 	//Static file deployed in /app/web/static in heroku or ../web/static in local
-	app.Static("/", "/app/web/static") //For Heroku
-	//app.Static("/", "./web/static") //For Localhost
+	//app.Static("/", "/app/web/static") //For Heroku
+	app.Static("/", "./web/static") //For Localhost
 	//WsMessageService
 	app.Get("/ws/:groupId/:id", websocket.New(func(c *websocket.Conn) {
 		jwtoken := c.Query("token")

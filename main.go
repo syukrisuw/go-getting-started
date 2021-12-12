@@ -36,7 +36,7 @@ func main() {
 	//use limiter max request between 1 minutes is only 20 connection request
 	app.Use(limiter.New(limiter.Config{
 		Expiration: 1,
-		Max:        20,
+		Max:        120,
 	}))
 
 	app.Use("/ws", func(c *fiber.Ctx) error {
