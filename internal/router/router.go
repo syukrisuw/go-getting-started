@@ -152,6 +152,51 @@ func SetupRoutes(app *fiber.App) {
 
 	}))
 
+	app.Get("/secured/admin/services/wss", websocket.New(func(c *websocket.Conn) {
+
+		// c.Locals is added to the *websocket.Conn
+
+		log.Println(c.Locals("allowed"))           // true
+		log.Println("id:", c.Params("id"))         // 123, can be used as room-id
+		log.Println("grouId:", c.Params("grouId")) // 123, can be used as room-id
+		//query string param
+		log.Println("v:", c.Query("v")) // 1.0
+		username := c.Query("username")
+		log.Println("username:", c.Query("username"))
+		log.Println("cookies-session:", c.Cookies("session")) // ""
+		//saving connection for broadcasting
+		currentConn := WebSocketConnection{Conn: c, Username: username}
+		//add the new connection to list
+		connections = append(connections, &currentConn)
+		broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $username Joined")
+
+		// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
+		var (
+			mt  int
+			msg []byte
+			err error
+		)
+		log.Printf("mt: %d", mt)
+
+		for {
+			if mt, msg, err = c.ReadMessage(); err != nil {
+				log.Println("read:", err)
+				//user might be disconnected
+				broadcastMessage(&currentConn, MESSAGE_LEAVE, "User:$username Might Be Leaving")
+				ejectConnection(&currentConn)
+				break
+			}
+			log.Printf("recv: %s", msg)
+			broadcastMessage(&currentConn, MESSAGE_CHAT, string(msg))
+
+			if err = c.WriteMessage(mt, msg); err != nil {
+				log.Println("write:", err)
+				break
+			}
+		}
+
+	}))
+
 	// Middleware
 	api := app.Group("/api", logger.New())
 	api.Get("/", controllers.Hello)
