@@ -1,1 +1,6 @@
-{}
+{
+    "terminal.integrated.env.windows": {
+        
+      "PATH": "C:/TDM-GCC-64/bin;C:/Program Files/Git/bin;C:/webserver/heroku/bin"
+      }
+}
