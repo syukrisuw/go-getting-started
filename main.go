@@ -31,6 +31,7 @@ func main() {
 	app := fiber.New()
 	port := os.Getenv("PORT")
 	database.ConnectDB()
+	middleware.SetupCache()
 	app.Use(cors.New())
 
 	// currentTime := time.Now()

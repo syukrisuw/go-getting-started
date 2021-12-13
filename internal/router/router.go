@@ -15,16 +15,13 @@ import (
 	gubrak "github.com/novalagung/gubrak/v2"
 )
 
-type M map[string]interface{}
+type WtMap map[string]interface{}
 
 const MESSAGE_NEW_USER = "New User"
 const MESSAGE_CHAT = "Chat"
 const MESSAGE_LEAVE = "Leave"
 
 var connections = make([]*WebSocketConnection, 0)
-
-//map for fast validation userid and secret
-var keyStore = map[uint]string{}
 
 type SocketPayload struct {
 	Message string
@@ -45,14 +42,6 @@ type WebSocketConnection struct {
 	*websocket.Conn
 	UserName string
 	UserId   uint
-}
-
-func GetKeyStore(userId uint) string {
-	return keyStore[userId]
-}
-
-func AddKey(userId uint, newKey string) {
-	keyStore[userId] = newKey
 }
 
 func broadcastMessage(currentConn *WebSocketConnection, kind, message string) {
@@ -95,13 +84,14 @@ func SetupRoutes(app *fiber.App) {
 
 		log.SetOutput(logFile)
 
-		jwtoken := c.Query("wttoken")
-		println(jwtoken)
-		if jwtoken == "" {
-			c.Conn.Close()
+		userWsKey := c.Query("userWsKey")
+		println("userWsKey: ", userWsKey)
+		if userWsKey == "" {
+			log.Println("invalid access, userWsKey is empty")
+			c.Close()
 		} else {
 			// c.Locals is added to the *websocket.Conn
-
+			log.Println("userWsKey: ", userWsKey)
 			log.Println(c.Locals("allowed"))             // true
 			log.Println("id:", c.Params("id"))           // 123, can be used as room-id
 			log.Println("groupId:", c.Params("groupId")) // 123, can be used as room-id
@@ -109,56 +99,53 @@ func SetupRoutes(app *fiber.App) {
 			userName := c.Query("userName")
 			log.Println("userName:", userName)
 			userIdString := c.Query("userId")
+
 			//conversion to uint base10(decimal) with 32 bit
 			userId64, errConversion := strconv.ParseUint(userIdString, 10, 32)
 			if errConversion != nil {
 				// handle error
 				log.Println("errConversion: ", errConversion)
-				c.Conn.Close()
+				c.Close()
 			}
 			userId := uint(userId64)
 			log.Println("userId:", userId)
-			//validate Token
-			//var tokenObj jwt.Token
-			// tokenObj, errParsing := jwt.Parse(jwtoken, func(token *jwt.Token) (interface{}, error) {
-			// 	return []byte("AllYourBase"), nil
-			// })
 
-			// if errParsing != nil {
-			// 	// handle error
-			// 	log.Println("errParsing: ", errParsing)
-			// 	c.Conn.Close()
-			// }
+			//validate Key
+			if !controllers.ValidateWsKey(userId, userWsKey) {
+				log.Println("ERROR:invalid userWsKey: ", errConversion)
+				c.Close()
+			} else {
+				log.Println("Valid userWsKey: ", errConversion)
+				//if controllers.ValidToken(tokenObj, userIdString) {
+				log.Println("cookies-session:", c.Cookies("session")) // ""
+				currentConn := WebSocketConnection{Conn: c, UserName: userName, UserId: userId}
+				//add the new connection to list
+				connections = append(connections, &currentConn)
+				broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $userName Joined")
 
-			//if controllers.ValidToken(tokenObj, userIdString) {
-			log.Println("cookies-session:", c.Cookies("session")) // ""
-			currentConn := WebSocketConnection{Conn: c, UserName: userName, UserId: userId}
-			//add the new connection to list
-			connections = append(connections, &currentConn)
-			broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $userName Joined")
+				// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
+				var (
+					mt  int
+					msg []byte
+					err error
+				)
+				log.Printf("mt: %d", mt)
 
-			// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
-			var (
-				mt  int
-				msg []byte
-				err error
-			)
-			log.Printf("mt: %d", mt)
+				for {
+					if mt, msg, err = c.ReadMessage(); err != nil {
+						log.Println("read:", err)
+						//user might be disconnected
+						broadcastMessage(&currentConn, MESSAGE_LEAVE, "User:$username Might Be Leaving")
+						ejectConnection(&currentConn)
+						break
+					}
+					log.Printf("recv: %s", msg)
+					broadcastMessage(&currentConn, MESSAGE_CHAT, string(msg))
 
-			for {
-				if mt, msg, err = c.ReadMessage(); err != nil {
-					log.Println("read:", err)
-					//user might be disconnected
-					broadcastMessage(&currentConn, MESSAGE_LEAVE, "User:$username Might Be Leaving")
-					ejectConnection(&currentConn)
-					break
-				}
-				log.Printf("recv: %s", msg)
-				broadcastMessage(&currentConn, MESSAGE_CHAT, string(msg))
-
-				if err = c.WriteMessage(mt, msg); err != nil {
-					log.Println("write:", err)
-					break
+					if err = c.WriteMessage(mt, msg); err != nil {
+						log.Println("write:", err)
+						break
+					}
 				}
 			}
 			// } else {

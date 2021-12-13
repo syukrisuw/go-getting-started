@@ -1,0 +1,53 @@
+[127.0.0.1]:58051 200 - POST /api/auth/login 
+[127.0.0.1]:58056 101 - GET /ws/wtuser/alaqsha 
+[127.0.0.1]:58065 101 - GET /ws/wtuser/alaqsha 
+[127.0.0.1]:58067 200 - POST /api/auth/login 
+[127.0.0.1]:58069 101 - GET /ws/wtuser/alaqsha 
+[127.0.0.1]:58086 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 08:35:17 true
+2021/12/13 08:35:17 id: alaqsha
+2021/12/13 08:35:17 groupId: wtuser
+2021/12/13 08:35:17 v: 
+2021/12/13 08:35:17 userName: 
+2021/12/13 08:35:17 userId: 0
+2021/12/13 08:35:17 userWsKey:  <nil>  invalid
+2021/12/13 08:35:17 cookies-session: 
+2021/12/13 08:35:17 mt: 0
+2021/12/13 08:36:40 recv: eteste
+[127.0.0.1]:58101 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 08:39:19 true
+2021/12/13 08:39:19 id: alaqsha
+2021/12/13 08:39:19 groupId: wtuser
+2021/12/13 08:39:19 v: 
+2021/12/13 08:39:19 userName: 
+2021/12/13 08:39:19 userId: 0
+2021/12/13 08:39:19 ERROR:invalid userWsKey:  <nil>
+2021/12/13 08:39:19 Valid userWsKey:  <nil>
+2021/12/13 08:39:19 cookies-session: 
+2021/12/13 08:39:19 mt: 0
+2021/12/13 08:39:26 recv: eteste
+[127.0.0.1]:58108 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 08:40:26 true
+2021/12/13 08:40:26 id: alaqsha
+2021/12/13 08:40:26 groupId: wtuser
+2021/12/13 08:40:26 v: 
+2021/12/13 08:40:26 userName: 
+2021/12/13 08:40:26 userId: 0
+2021/12/13 08:40:26 ERROR:invalid userWsKey:  <nil>
+2021/12/13 08:40:26 Valid userWsKey:  <nil>
+2021/12/13 08:40:26 cookies-session: 
+2021/12/13 08:40:26 mt: 0
+2021/12/13 08:40:50 read: websocket: close 1000 (normal)
+[127.0.0.1]:58111 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 08:40:56 invalid access, userWsKey is empty
+[127.0.0.1]:58119 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 08:42:33 invalid access, userWsKey is empty
+[127.0.0.1]:58121 200 - POST /api/auth/login 
+[127.0.0.1]:58236 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 08:43:30 true
+2021/12/13 08:43:30 id: alaqsha
+2021/12/13 08:43:30 groupId: wtuser
+2021/12/13 08:43:30 v: 
+2021/12/13 08:43:30 userName: 
+2021/12/13 08:43:30 userId: 0
+2021/12/13 08:43:30 ERROR:invalid userWsKey:  <nil>

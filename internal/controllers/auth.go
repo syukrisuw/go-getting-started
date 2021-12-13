@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+	"log"
 	"time"
 
 	"gorm.io/gorm"
@@ -9,12 +11,18 @@ import (
 	"github.com/heroku/alaqsha/internal/database"
 	"github.com/heroku/alaqsha/internal/middleware"
 	"github.com/heroku/alaqsha/internal/models"
-	"github.com/heroku/alaqsha/internal/router"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/heroku/alaqsha/pkg/config"
 	"golang.org/x/crypto/bcrypt"
 )
+
+func ValidateWsKey(userId uint, userWsKey string) bool {
+
+	wtSocketCacheKey := fmt.Sprint(config.GetWsKeyHeader(), string(userId))
+	cachedUserWsKey := middleware.GetValueForKey(wtSocketCacheKey)
+	return cachedUserWsKey == userWsKey
+}
 
 // CheckPasswordHash compare password with hash
 func CheckPasswordHash(password, hash string) bool {
@@ -118,7 +126,12 @@ func Login(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
 
+	//generate for websocket key
 	userWsKey := middleware.GenerateKey(ud.Username, config.GetSecretKey())
-	router.AddKey(ud.ID, string(userWsKey))
-	return c.JSON(fiber.Map{"status": "success", "message": "Success login", "data": t, "userId": ud.ID, "userTypeId": userTypeId})
+	//save to cache for validation during using websocket
+	wtSocketCacheKey = fmt.Sprint(config.GetWsKeyHeader(), string(ud.ID))
+	log.Print("wtSocketCacheKey: ", wtSocketCacheKey)
+	middleware.SetValueForKey(wtSocketCacheKey, string(userWsKey))
+
+	return c.JSON(fiber.Map{"status": "success", "message": "Success login", "data": t, "userId": ud.ID, "userTypeId": userTypeId, "userWsKey": userWsKey})
 }
