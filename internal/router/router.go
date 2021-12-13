@@ -15,8 +15,6 @@ import (
 	gubrak "github.com/novalagung/gubrak/v2"
 )
 
-type WtMap map[string]interface{}
-
 const MESSAGE_NEW_USER = "New User"
 const MESSAGE_CHAT = "Chat"
 const MESSAGE_LEAVE = "Leave"
@@ -85,13 +83,13 @@ func SetupRoutes(app *fiber.App) {
 		log.SetOutput(logFile)
 
 		userWsKey := c.Query("userWsKey")
-		println("userWsKey: ", userWsKey)
+
 		if userWsKey == "" {
-			log.Println("invalid access, userWsKey is empty")
+			log.Println("INVALID ACCESSS, userWsKey is empty")
 			c.Close()
 		} else {
 			// c.Locals is added to the *websocket.Conn
-			log.Println("userWsKey: ", userWsKey)
+			log.Println("VALID ACCESSS WITH userWsKey: ", userWsKey)
 			log.Println(c.Locals("allowed"))             // true
 			log.Println("id:", c.Params("id"))           // 123, can be used as room-id
 			log.Println("groupId:", c.Params("groupId")) // 123, can be used as room-id
@@ -112,10 +110,10 @@ func SetupRoutes(app *fiber.App) {
 
 			//validate Key
 			if !controllers.ValidateWsKey(userId, userWsKey) {
-				log.Println("ERROR:invalid userWsKey: ", errConversion)
+				log.Println("ERROR:INVALID userWsKey: ", errConversion)
 				c.Close()
 			} else {
-				log.Println("Valid userWsKey: ", errConversion)
+				log.Println("VALID userWsKey: ", errConversion)
 				//if controllers.ValidToken(tokenObj, userIdString) {
 				log.Println("cookies-session:", c.Cookies("session")) // ""
 				currentConn := WebSocketConnection{Conn: c, UserName: userName, UserId: userId}

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	b64 "encoding/base64"
 	"fmt"
 	"log"
 	"time"
@@ -21,6 +22,10 @@ func ValidateWsKey(userId uint, userWsKey string) bool {
 
 	wtSocketCacheKey := fmt.Sprint(config.GetWsKeyHeader(), string(userId))
 	cachedUserWsKey := middleware.GetValueForKey(wtSocketCacheKey)
+	fmt.Println("input userWsKey: ", userWsKey)
+	fmt.Println("cachedUserWsKey 2: ", cachedUserWsKey)
+	fmt.Println("valid: ", cachedUserWsKey == userWsKey)
+
 	return cachedUserWsKey == userWsKey
 }
 
@@ -128,10 +133,11 @@ func Login(c *fiber.Ctx) error {
 
 	//generate for websocket key
 	userWsKey := middleware.GenerateKey(ud.Username, config.GetSecretKey())
+	userWsKeyBase64 := b64.StdEncoding.EncodeToString(userWsKey)
 	//save to cache for validation during using websocket
-	wtSocketCacheKey = fmt.Sprint(config.GetWsKeyHeader(), string(ud.ID))
-	log.Print("wtSocketCacheKey: ", wtSocketCacheKey)
-	middleware.SetValueForKey(wtSocketCacheKey, string(userWsKey))
+	wtSocketCacheKey := fmt.Sprint(config.GetWsKeyHeader(), string(ud.ID))
+	log.Print("saving wtSocketCacheKey: ", wtSocketCacheKey, " with value: ", userWsKeyBase64)
+	middleware.SetValueForKey(wtSocketCacheKey, string(userWsKeyBase64))
 
-	return c.JSON(fiber.Map{"status": "success", "message": "Success login", "data": t, "userId": ud.ID, "userTypeId": userTypeId, "userWsKey": userWsKey})
+	return c.JSON(fiber.Map{"status": "success", "message": "Success login", "data": t, "userId": ud.ID, "userTypeId": userTypeId, "userWsKey": string(userWsKeyBase64)})
 }

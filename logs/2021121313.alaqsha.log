@@ -1,0 +1,100 @@
+[127.0.0.1]:53429 304 - GET / 
+[127.0.0.1]:53429 304 - GET /splash/img/light-1x.png 
+[127.0.0.1]:53429 304 - GET /flutter_service_worker.js 
+[127.0.0.1]:53434 304 - GET /manifest.json 
+[127.0.0.1]:53429 304 - GET /main.dart.js 
+[127.0.0.1]:53429 304 - GET /assets/FontManifest.json 
+[127.0.0.1]:53429 304 - GET /assets/fonts/MaterialIcons-Regular.otf 
+[127.0.0.1]:53430 304 - GET /assets/packages/cupertino_icons/assets/CupertinoIcons.ttf 
+[127.0.0.1]:53430 304 - GET /main.dart.js_8.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_4.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_11.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_12.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_13.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_15.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_10.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_14.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_29.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_32.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_9.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_25.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_2.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_36.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_1.part.js 
+[127.0.0.1]:53430 304 - GET /assets/AssetManifest.json 
+[127.0.0.1]:53457 200 - POST /api/auth/login 
+[127.0.0.1]:53459 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 13:22:31 true
+2021/12/13 13:22:31 id: alaqsha
+2021/12/13 13:22:31 groupId: wtuser
+2021/12/13 13:22:31 v: 
+2021/12/13 13:22:31 userName: 
+2021/12/13 13:22:31 userId: 0
+2021/12/13 13:22:31 ERROR:invalid userWsKey:  <nil>
+[127.0.0.1]:53430 304 - GET /main.dart.js_18.part.js 
+[127.0.0.1]:53429 304 - GET /main.dart.js_19.part.js 
+[127.0.0.1]:53480 304 - GET /main.dart.js_17.part.js 
+[127.0.0.1]:53430 304 - GET /main.dart.js_16.part.js 
+[127.0.0.1]:53480 304 - GET /main.dart.js_7.part.js 
+[127.0.0.1]:53503 200 - POST /api/auth/login 
+[127.0.0.1]:53507 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 13:27:39 userWsKey:  /Q116cOJMbl0kMYbPWAEK1KKhaRFkTM922XH1B 5ujjj
+2021/12/13 13:27:39 true
+2021/12/13 13:27:39 id: alaqsha
+2021/12/13 13:27:39 groupId: wtuser
+2021/12/13 13:27:39 v: 
+2021/12/13 13:27:39 userName: 
+2021/12/13 13:27:39 userId: 0
+2021/12/13 13:27:39 userWsKey: /Q116cOJMbl0kMYbPWAEK1KKhaRFkTM922XH1B 5ujjj
+2021/12/13 13:27:39 cachedUserWsKey: 
+2021/12/13 13:27:39 valid: false
+2021/12/13 13:27:39 ERROR:invalid userWsKey:  <nil>
+[127.0.0.1]:53524 200 - POST /api/auth/login 
+[127.0.0.1]:53527 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 13:33:14 userWsKey:  oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:33:14 true
+2021/12/13 13:33:14 id: alaqsha
+2021/12/13 13:33:14 groupId: wtuser
+2021/12/13 13:33:14 v: 
+2021/12/13 13:33:14 userName: 
+2021/12/13 13:33:14 userId: 0
+2021/12/13 13:33:14 userWsKey: oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:33:14 cachedUserWsKey: 
+2021/12/13 13:33:14 valid: false
+2021/12/13 13:33:14 ERROR:invalid userWsKey:  <nil>
+[127.0.0.1]:53530 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 13:33:53 userWsKey:  oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:33:53 true
+2021/12/13 13:33:53 id: alaqsha
+2021/12/13 13:33:53 groupId: wtuser
+2021/12/13 13:33:53 v: 
+2021/12/13 13:33:53 userName: 
+2021/12/13 13:33:53 userId: 0
+2021/12/13 13:33:53 userWsKey: oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:33:53 cachedUserWsKey: 
+2021/12/13 13:33:53 valid: false
+2021/12/13 13:33:53 ERROR:invalid userWsKey:  <nil>
+[127.0.0.1]:53538 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 13:35:22 userWsKey:  oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:35:22 true
+2021/12/13 13:35:22 id: alaqsha
+2021/12/13 13:35:22 groupId: wtuser
+2021/12/13 13:35:22 v: 
+2021/12/13 13:35:22 userName: 
+2021/12/13 13:35:22 userId: 0
+2021/12/13 13:35:22 userWsKey: oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:35:22 cachedUserWsKey: 
+2021/12/13 13:35:22 valid: false
+2021/12/13 13:35:22 ERROR:invalid userWsKey:  <nil>
+[127.0.0.1]:53539 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 13:35:25 userWsKey:  oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:35:25 true
+2021/12/13 13:35:25 id: alaqsha
+2021/12/13 13:35:25 groupId: wtuser
+2021/12/13 13:35:25 v: 
+2021/12/13 13:35:25 userName: 
+2021/12/13 13:35:25 userId: 0
+2021/12/13 13:35:25 userWsKey: oBkFd4wRhcZp0UMEpOXX5JuTNFrPhDOSkdMt2axwfyNy
+2021/12/13 13:35:25 cachedUserWsKey: 
+2021/12/13 13:35:25 valid: false
+2021/12/13 13:35:25 ERROR:invalid userWsKey:  <nil>

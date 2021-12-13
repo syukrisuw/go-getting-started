@@ -1,0 +1,19 @@
+[127.0.0.1]:54405 200 - POST /api/auth/login 
+[127.0.0.1]:54408 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 14:01:16 VALID ACCESSS WITH userWsKey:  fhWrAqNVNifZOvL91Hezd32uZqRDjyicicU11ezSL3nr
+2021/12/13 14:01:16 true
+2021/12/13 14:01:16 id: alaqsha
+2021/12/13 14:01:16 groupId: wtuser
+2021/12/13 14:01:16 v: 
+2021/12/13 14:01:16 userName: 
+2021/12/13 14:01:16 userId: 0
+[127.0.0.1]:54442 200 - POST /api/auth/login 
+[127.0.0.1]:54449 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 14:11:28 VALID ACCESSS WITH userWsKey:  OmOBkLtjZxqsdxmhqfFJmWVK6fb7jTrCZIgmpF xLYiT
+2021/12/13 14:11:28 true
+2021/12/13 14:11:28 id: alaqsha
+2021/12/13 14:11:28 groupId: wtuser
+2021/12/13 14:11:28 v: 
+2021/12/13 14:11:28 userName: 
+2021/12/13 14:11:28 userId: 0
+[127.0.0.1]:54458 304 - GET /flutter_service_worker.js 
