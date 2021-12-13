@@ -17,3 +17,13 @@
 2021/12/13 14:11:28 userName: 
 2021/12/13 14:11:28 userId: 0
 [127.0.0.1]:54458 304 - GET /flutter_service_worker.js 
+[127.0.0.1]:54568 200 - POST /api/auth/login 
+[127.0.0.1]:54572 101 - GET /ws/wtuser/alaqsha 
+2021/12/13 14:15:42 VALID ACCESSS WITH userWsKey:   6mYj2izTdDHMt0rsMJw0PrZVhM m/T5snVFjdK/Dswr
+2021/12/13 14:15:42 true
+2021/12/13 14:15:42 id: alaqsha
+2021/12/13 14:15:42 groupId: wtuser
+2021/12/13 14:15:42 v: 
+2021/12/13 14:15:42 userName: 
+2021/12/13 14:15:42 userId: 0
+2021/12/13 14:15:42 ERROR:INVALID userWsKey:  <nil>

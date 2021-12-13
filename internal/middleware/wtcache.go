@@ -17,9 +17,10 @@ func SetupCache() {
 func GetValueForKey(keyName string) string {
 	value, found := WtCache.Get(keyName)
 	if found {
-		print("Get key: ", keyName, " value: ", value.(string))
+		println("Get key: ", keyName, " value: ", value.(string))
 		return value.(string)
 	} else {
+		println("Get key: ", keyName, " NOT FOUND")
 		return ""
 	}
 
@@ -32,9 +33,9 @@ func SetValueForKey(keyName string, value string) int {
 
 	//check
 	checkValue := GetValueForKey(keyName)
-	print("Check Set Cache key:", keyName, " value:", checkValue)
+	println("Check Set Cache key:", keyName, " value:", checkValue)
 
 	//end check
-	print("Saving key:", keyName, " value:", value)
+	println("Saving key:", keyName, " value:", value)
 	return 1
 }
