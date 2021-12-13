@@ -17,7 +17,7 @@ func hashPassword(password string) (string, error) {
 	return string(bytes), err
 }
 
-func validToken(t *jwt.Token, id string) bool {
+func ValidToken(t *jwt.Token, id string) bool {
 	n, err := strconv.Atoi(id)
 	if err != nil {
 		return false
@@ -150,7 +150,7 @@ func UpdateUser(c *fiber.Ctx) error {
 	token := c.Locals("user").(*jwt.Token)
 
 	//validation against their token
-	if !validToken(token, id) {
+	if !ValidToken(token, id) {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Invalid token id", "data": nil})
 	}
 
@@ -183,7 +183,7 @@ func UpdateUserByAdmin(c *fiber.Ctx) error {
 	token := c.Locals("user").(*jwt.Token)
 
 	//validation against their token
-	if !validToken(token, id) {
+	if !ValidToken(token, id) {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Invalid token id", "data": nil})
 	}
 

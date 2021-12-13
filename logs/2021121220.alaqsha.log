@@ -1,0 +1,21 @@
+[127.0.0.1]:55302 101 - GET /ws/wtuser/alaqsha 
+2021/12/12 20:00:06 true
+2021/12/12 20:00:06 id: alaqsha
+2021/12/12 20:00:06 groupId: wtuser
+2021/12/12 20:00:06 v: 
+2021/12/12 20:00:06 username: dataentry
+2021/12/12 20:00:06 cookies-session: 
+2021/12/12 20:00:06 mt: 0
+2021/12/12 20:00:07 recv: testr4
+2021/12/12 20:00:31 recv: testr4
+2021/12/12 20:36:21 recv: testr4
+2021/12/12 20:36:45 read: websocket: close 1000 (normal)
+[127.0.0.1]:56469 101 - GET /ws/wtuser/alaqsha 
+2021/12/12 20:36:46 true
+2021/12/12 20:36:46 id: alaqsha
+2021/12/12 20:36:46 groupId: wtuser
+2021/12/12 20:36:46 v: 
+2021/12/12 20:36:46 username: dataentry
+2021/12/12 20:36:46 cookies-session: 
+2021/12/12 20:36:46 mt: 0
+2021/12/12 20:36:52 recv: testr4

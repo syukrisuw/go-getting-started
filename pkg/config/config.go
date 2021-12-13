@@ -13,6 +13,12 @@ func Config(key string) string {
 	err := godotenv.Load(".env")
 	if err != nil {
 		fmt.Print("Error loading .env file")
+
 	}
 	return os.Getenv(key)
+}
+
+func GetSecretKey() string {
+	//base64 of string alaqsha.permata.bintaro
+	return "YWxhcXNoYS5wZXJtYXRhLmJpbnRhcm8="
 }

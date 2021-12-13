@@ -7,7 +7,9 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/heroku/alaqsha/internal/database"
+	"github.com/heroku/alaqsha/internal/middleware"
 	"github.com/heroku/alaqsha/internal/models"
+	"github.com/heroku/alaqsha/internal/router"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/heroku/alaqsha/pkg/config"
@@ -111,10 +113,12 @@ func Login(c *fiber.Ctx) error {
 	claims["user_id"] = ud.ID
 	claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
-	t, err := token.SignedString([]byte(config.Config("SECRET")))
+	t, err := token.SignedString([]byte(config.GetSecretKey()))
 	if err != nil {
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
 
-	return c.JSON(fiber.Map{"status": "success", "message": "Success login", "data": t, "userTypeId": userTypeId})
+	userWsKey := middleware.GenerateKey(ud.Username, config.GetSecretKey())
+	router.AddKey(ud.ID, string(userWsKey))
+	return c.JSON(fiber.Map{"status": "success", "message": "Success login", "data": t, "userId": ud.ID, "userTypeId": userTypeId})
 }

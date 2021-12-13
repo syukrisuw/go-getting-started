@@ -3,6 +3,9 @@ package router
 import (
 	"fmt"
 	"log"
+	"os"
+	"strconv"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -20,6 +23,9 @@ const MESSAGE_LEAVE = "Leave"
 
 var connections = make([]*WebSocketConnection, 0)
 
+//map for fast validation userid and secret
+var keyStore = map[uint]string{}
+
 type SocketPayload struct {
 	Message string
 }
@@ -30,14 +36,28 @@ type SocketResponse struct {
 	Message string
 }
 
+type WsKey struct {
+	UserId uint
+	RawKey string
+}
+
 type WebSocketConnection struct {
 	*websocket.Conn
-	Username string
+	UserName string
+	UserId   uint
+}
+
+func GetKeyStore(userId uint) string {
+	return keyStore[userId]
+}
+
+func AddKey(userId uint, newKey string) {
+	keyStore[userId] = newKey
 }
 
 func broadcastMessage(currentConn *WebSocketConnection, kind, message string) {
 	if kind == MESSAGE_LEAVE {
-		message = fmt.Sprintf("user %s %s", currentConn.Username, message)
+		message = fmt.Sprintf("user %s %s", currentConn.UserName, message)
 	}
 
 	for _, eachConn := range connections {
@@ -46,7 +66,7 @@ func broadcastMessage(currentConn *WebSocketConnection, kind, message string) {
 		}
 
 		eachConn.WriteJSON(SocketResponse{
-			From:    currentConn.Username,
+			From:    currentConn.UserName,
 			Type:    kind,
 			Message: message,
 		})
@@ -67,22 +87,55 @@ func SetupRoutes(app *fiber.App) {
 	app.Static("/", "./web/static") //For Localhost
 	//WsMessageService
 	app.Get("/ws/:groupId/:id", websocket.New(func(c *websocket.Conn) {
-		jwtoken := c.Query("token")
+		logFile, err := os.OpenFile(GetDefaultLogFileName(), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		if err != nil {
+			log.Fatalf("error opening file: %v", err)
+		}
+		defer logFile.Close()
+
+		log.SetOutput(logFile)
+
+		jwtoken := c.Query("wttoken")
+		println(jwtoken)
 		if jwtoken == "" {
 			c.Conn.Close()
 		} else {
 			// c.Locals is added to the *websocket.Conn
+
 			log.Println(c.Locals("allowed"))             // true
 			log.Println("id:", c.Params("id"))           // 123, can be used as room-id
 			log.Println("groupId:", c.Params("groupId")) // 123, can be used as room-id
 			log.Println("v:", c.Query("v"))              // 1.0
-			username := c.Query("username")
-			log.Println("username:", c.Query("username"))
+			userName := c.Query("userName")
+			log.Println("userName:", userName)
+			userIdString := c.Query("userId")
+			//conversion to uint base10(decimal) with 32 bit
+			userId64, errConversion := strconv.ParseUint(userIdString, 10, 32)
+			if errConversion != nil {
+				// handle error
+				log.Println("errConversion: ", errConversion)
+				c.Conn.Close()
+			}
+			userId := uint(userId64)
+			log.Println("userId:", userId)
+			//validate Token
+			//var tokenObj jwt.Token
+			// tokenObj, errParsing := jwt.Parse(jwtoken, func(token *jwt.Token) (interface{}, error) {
+			// 	return []byte("AllYourBase"), nil
+			// })
+
+			// if errParsing != nil {
+			// 	// handle error
+			// 	log.Println("errParsing: ", errParsing)
+			// 	c.Conn.Close()
+			// }
+
+			//if controllers.ValidToken(tokenObj, userIdString) {
 			log.Println("cookies-session:", c.Cookies("session")) // ""
-			currentConn := WebSocketConnection{Conn: c, Username: username}
+			currentConn := WebSocketConnection{Conn: c, UserName: userName, UserId: userId}
 			//add the new connection to list
 			connections = append(connections, &currentConn)
-			broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $username Joined")
+			broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $userName Joined")
 
 			// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
 			var (
@@ -108,6 +161,10 @@ func SetupRoutes(app *fiber.App) {
 					break
 				}
 			}
+			// } else {
+			// 	log.Println("Invalid Token")
+			// 	c.Conn.Close()
+			// }
 		}
 
 	}))
@@ -125,7 +182,7 @@ func SetupRoutes(app *fiber.App) {
 		log.Println("username:", c.Query("username"))
 		log.Println("cookies-session:", c.Cookies("session")) // ""
 		//saving connection for broadcasting
-		currentConn := WebSocketConnection{Conn: c, Username: username}
+		currentConn := WebSocketConnection{Conn: c, UserName: username}
 		//add the new connection to list
 		connections = append(connections, &currentConn)
 		message := fmt.Sprintf("User: %s Joined", username)
@@ -171,7 +228,7 @@ func SetupRoutes(app *fiber.App) {
 		log.Println("username:", c.Query("username"))
 		log.Println("cookies-session:", c.Cookies("session")) // ""
 		//saving connection for broadcasting
-		currentConn := WebSocketConnection{Conn: c, Username: username}
+		currentConn := WebSocketConnection{Conn: c, UserName: username}
 		//add the new connection to list
 		connections = append(connections, &currentConn)
 		broadcastMessage(&currentConn, MESSAGE_NEW_USER, "User: $username Joined")
@@ -247,4 +304,21 @@ func SetupRoutes(app *fiber.App) {
 	//webrtc
 	wtwebrtc := api.Group("/webrtc")
 	wtwebrtc.Post("/sdp/m/:meetingId/c/:userId/p/:peerId/s/:isSender", controllers.GetWebRtcAccess)
+}
+
+func GetDefaultLogFileName() string {
+
+	currentTime := time.Now()
+	layout := "20060102"
+	formattedDate := currentTime.Format(layout)
+	//layout := "20060102"
+	//formattedDate, _ := time.Parse(layout, currentTime)
+	//currentYear := currentTime.Year()
+	//currentMonth := currentTime.Month()
+	//currentDay := currentTime.Day()
+	currentHour := currentTime.Hour()
+	logFilenamePrefix := fmt.Sprintf("%s%d.alaqsha.log", formattedDate, currentHour)
+	logPath := "./logs/"
+
+	return fmt.Sprintf("%s%s", logPath, logFilenamePrefix)
 }
